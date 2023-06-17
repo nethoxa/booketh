@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ERC 20 - booketh</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../EVM/index.html"><strong aria-hidden="true">1.</strong> EVM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../EVM/Solidity Versions.html"><strong aria-hidden="true">1.1.</strong> Solidity versions</a></li><li class="chapter-item expanded "><a href="../EVM/Upgradeable.html"><strong aria-hidden="true">1.2.</strong> Upgradeable</a></li></ol></li><li class="chapter-item expanded "><a href="../Data locations/index.html"><strong aria-hidden="true">2.</strong> Data locations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Data locations/Stack.html"><strong aria-hidden="true">2.1.</strong> Stack</a></li><li class="chapter-item expanded "><a href="../Data locations/Memory.html"><strong aria-hidden="true">2.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="../Data locations/Storage.html"><strong aria-hidden="true">2.3.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../Data locations/Calldata.html"><strong aria-hidden="true">2.4.</strong> Calldata</a></li></ol></li><li class="chapter-item expanded "><a href="../Tokens/index.html"><strong aria-hidden="true">3.</strong> Tokens</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Tokens/ERC 20.html"><strong aria-hidden="true">3.1.</strong> ERC 20</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 721.html"><strong aria-hidden="true">3.2.</strong> ERC 721</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 777.html"><strong aria-hidden="true">3.3.</strong> ERC 777</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 1155.html"><strong aria-hidden="true">3.4.</strong> ERC 1155</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 4626.html"><strong aria-hidden="true">3.5.</strong> ERC 4626</a></li></ol></li><li class="chapter-item expanded "><a href="../DeFi/index.html"><strong aria-hidden="true">4.</strong> DeFi</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DeFi/Uniswap.html"><strong aria-hidden="true">4.1.</strong> Uniswap</a></li><li class="chapter-item expanded "><a href="../DeFi/AAVE.html"><strong aria-hidden="true">4.2.</strong> AAVE</a></li><li class="chapter-item expanded "><a href="../DeFi/Curve.html"><strong aria-hidden="true">4.3.</strong> Curve</a></li></ol></li><li class="chapter-item expanded "><a href="../Yul/index.html"><strong aria-hidden="true">5.</strong> Yul</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Yul/Basics.html"><strong aria-hidden="true">5.1.</strong> Basics</a></li><li class="chapter-item expanded "><a href="../Yul/Advanced.html"><strong aria-hidden="true">5.2.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="../Yul/ERC 20.html" class="active"><strong aria-hidden="true">5.3.</strong> ERC 20</a></li><li class="chapter-item expanded "><a href="../Yul/Functions.html"><strong aria-hidden="true">5.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../Yul/Opcodes.html"><strong aria-hidden="true">5.5.</strong> Opcodes</a></li></ol></li><li class="chapter-item expanded "><a href="../References.html"><strong aria-hidden="true">6.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">booketh</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="erc-20"><a class="header" href="#erc-20">ERC 20</a></h1>
+<p>Example from official docs</p>
+<pre><code class="language-solidity">object &quot;Token&quot; {
+    code {
+        // Store the creator in slot zero.
+        sstore(0, caller())
+
+        // Deploy the contract
+        datacopy(0, dataoffset(&quot;runtime&quot;), datasize(&quot;runtime&quot;))
+        return(0, datasize(&quot;runtime&quot;))
+    }
+    object &quot;runtime&quot; {
+        code {
+            // Protection against sending Ether
+            require(iszero(callvalue()))
+
+            // Dispatcher
+            switch selector()
+            case 0x70a08231 /* &quot;balanceOf(address)&quot; */ {
+                returnUint(balanceOf(decodeAsAddress(0)))
+            }
+            case 0x18160ddd /* &quot;totalSupply()&quot; */ {
+                returnUint(totalSupply())
+            }
+            case 0xa9059cbb /* &quot;transfer(address,uint256)&quot; */ {
+                transfer(decodeAsAddress(0), decodeAsUint(1))
+                returnTrue()
+            }
+            case 0x23b872dd /* &quot;transferFrom(address,address,uint256)&quot; */ {
+                transferFrom(decodeAsAddress(0), decodeAsAddress(1), decodeAsUint(2))
+                returnTrue()
+            }
+            case 0x095ea7b3 /* &quot;approve(address,uint256)&quot; */ {
+                approve(decodeAsAddress(0), decodeAsUint(1))
+                returnTrue()
+            }
+            case 0xdd62ed3e /* &quot;allowance(address,address)&quot; */ {
+                returnUint(allowance(decodeAsAddress(0), decodeAsAddress(1)))
+            }
+            case 0x40c10f19 /* &quot;mint(address,uint256)&quot; */ {
+                mint(decodeAsAddress(0), decodeAsUint(1))
+                returnTrue()
+            }
+            default {
+                revert(0, 0)
+            }
+
+            function mint(account, amount) {
+                require(calledByOwner())
+
+                mintTokens(amount)
+                addToBalance(account, amount)
+                emitTransfer(0, account, amount)
+            }
+            function transfer(to, amount) {
+                executeTransfer(caller(), to, amount)
+            }
+            function approve(spender, amount) {
+                revertIfZeroAddress(spender)
+                setAllowance(caller(), spender, amount)
+                emitApproval(caller(), spender, amount)
+            }
+            function transferFrom(from, to, amount) {
+                decreaseAllowanceBy(from, caller(), amount)
+                executeTransfer(from, to, amount)
+            }
+
+            function executeTransfer(from, to, amount) {
+                revertIfZeroAddress(to)
+                deductFromBalance(from, amount)
+                addToBalance(to, amount)
+                emitTransfer(from, to, amount)
+            }
+
+
+            /* ---------- calldata decoding functions ----------- */
+            function selector() -&gt; s {
+                s := div(calldataload(0), 0x100000000000000000000000000000000000000000000000000000000)
+            }
+
+            function decodeAsAddress(offset) -&gt; v {
+                v := decodeAsUint(offset)
+                if iszero(iszero(and(v, not(0xffffffffffffffffffffffffffffffffffffffff)))) {
+                    revert(0, 0)
+                }
+            }
+            function decodeAsUint(offset) -&gt; v {
+                let pos := add(4, mul(offset, 0x20))
+                if lt(calldatasize(), add(pos, 0x20)) {
+                    revert(0, 0)
+                }
+                v := calldataload(pos)
+            }
+            /* ---------- calldata encoding functions ---------- */
+            function returnUint(v) {
+                mstore(0, v)
+                return(0, 0x20)
+            }
+            function returnTrue() {
+                returnUint(1)
+            }
+
+            /* -------- events ---------- */
+            function emitTransfer(from, to, amount) {
+                let signatureHash := 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+                emitEvent(signatureHash, from, to, amount)
+            }
+            function emitApproval(from, spender, amount) {
+                let signatureHash := 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
+                emitEvent(signatureHash, from, spender, amount)
+            }
+            function emitEvent(signatureHash, indexed1, indexed2, nonIndexed) {
+                mstore(0, nonIndexed)
+                log3(0, 0x20, signatureHash, indexed1, indexed2)
+            }
+
+            /* -------- storage layout ---------- */
+            function ownerPos() -&gt; p { p := 0 }
+            function totalSupplyPos() -&gt; p { p := 1 }
+            function accountToStorageOffset(account) -&gt; offset {
+                offset := add(0x1000, account)
+            }
+            function allowanceStorageOffset(account, spender) -&gt; offset {
+                offset := accountToStorageOffset(account)
+                mstore(0, offset)
+                mstore(0x20, spender)
+                offset := keccak256(0, 0x40)
+            }
+
+            /* -------- storage access ---------- */
+            function owner() -&gt; o {
+                o := sload(ownerPos())
+            }
+            function totalSupply() -&gt; supply {
+                supply := sload(totalSupplyPos())
+            }
+            function mintTokens(amount) {
+                sstore(totalSupplyPos(), safeAdd(totalSupply(), amount))
+            }
+            function balanceOf(account) -&gt; bal {
+                bal := sload(accountToStorageOffset(account))
+            }
+            function addToBalance(account, amount) {
+                let offset := accountToStorageOffset(account)
+                sstore(offset, safeAdd(sload(offset), amount))
+            }
+            function deductFromBalance(account, amount) {
+                let offset := accountToStorageOffset(account)
+                let bal := sload(offset)
+                require(lte(amount, bal))
+                sstore(offset, sub(bal, amount))
+            }
+            function allowance(account, spender) -&gt; amount {
+                amount := sload(allowanceStorageOffset(account, spender))
+            }
+            function setAllowance(account, spender, amount) {
+                sstore(allowanceStorageOffset(account, spender), amount)
+            }
+            function decreaseAllowanceBy(account, spender, amount) {
+                let offset := allowanceStorageOffset(account, spender)
+                let currentAllowance := sload(offset)
+                require(lte(amount, currentAllowance))
+                sstore(offset, sub(currentAllowance, amount))
+            }
+
+            /* ---------- utility functions ---------- */
+            function lte(a, b) -&gt; r {
+                r := iszero(gt(a, b))
+            }
+            function gte(a, b) -&gt; r {
+                r := iszero(lt(a, b))
+            }
+            function safeAdd(a, b) -&gt; r {
+                r := add(a, b)
+                if or(lt(r, a), lt(r, b)) { revert(0, 0) }
+            }
+            function calledByOwner() -&gt; cbo {
+                cbo := eq(owner(), caller())
+            }
+            function revertIfZeroAddress(addr) {
+                require(addr)
+            }
+            function require(condition) {
+                if iszero(condition) { revert(0, 0) }
+            }
+        }
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Yul/Advanced.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../Yul/Functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Yul/Advanced.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../Yul/Functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

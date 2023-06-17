@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Uniswap - booketh</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../EVM/index.html"><strong aria-hidden="true">1.</strong> EVM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../EVM/Solidity Versions.html"><strong aria-hidden="true">1.1.</strong> Solidity versions</a></li><li class="chapter-item expanded "><a href="../EVM/Upgradeable.html"><strong aria-hidden="true">1.2.</strong> Upgradeable</a></li></ol></li><li class="chapter-item expanded "><a href="../Data locations/index.html"><strong aria-hidden="true">2.</strong> Data locations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Data locations/Stack.html"><strong aria-hidden="true">2.1.</strong> Stack</a></li><li class="chapter-item expanded "><a href="../Data locations/Memory.html"><strong aria-hidden="true">2.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="../Data locations/Storage.html"><strong aria-hidden="true">2.3.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../Data locations/Calldata.html"><strong aria-hidden="true">2.4.</strong> Calldata</a></li></ol></li><li class="chapter-item expanded "><a href="../Tokens/index.html"><strong aria-hidden="true">3.</strong> Tokens</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Tokens/ERC 20.html"><strong aria-hidden="true">3.1.</strong> ERC 20</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 721.html"><strong aria-hidden="true">3.2.</strong> ERC 721</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 777.html"><strong aria-hidden="true">3.3.</strong> ERC 777</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 1155.html"><strong aria-hidden="true">3.4.</strong> ERC 1155</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 4626.html"><strong aria-hidden="true">3.5.</strong> ERC 4626</a></li></ol></li><li class="chapter-item expanded "><a href="../DeFi/index.html"><strong aria-hidden="true">4.</strong> DeFi</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DeFi/Uniswap.html" class="active"><strong aria-hidden="true">4.1.</strong> Uniswap</a></li><li class="chapter-item expanded "><a href="../DeFi/AAVE.html"><strong aria-hidden="true">4.2.</strong> AAVE</a></li><li class="chapter-item expanded "><a href="../DeFi/Curve.html"><strong aria-hidden="true">4.3.</strong> Curve</a></li></ol></li><li class="chapter-item expanded "><a href="../Yul/index.html"><strong aria-hidden="true">5.</strong> Yul</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Yul/Basics.html"><strong aria-hidden="true">5.1.</strong> Basics</a></li><li class="chapter-item expanded "><a href="../Yul/Advanced.html"><strong aria-hidden="true">5.2.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="../Yul/ERC 20.html"><strong aria-hidden="true">5.3.</strong> ERC 20</a></li><li class="chapter-item expanded "><a href="../Yul/Functions.html"><strong aria-hidden="true">5.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../Yul/Opcodes.html"><strong aria-hidden="true">5.5.</strong> Opcodes</a></li></ol></li><li class="chapter-item expanded "><a href="../References.html"><strong aria-hidden="true">6.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">booketh</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="uniswap-v3"><a class="header" href="#uniswap-v3">Uniswap (v3)</a></h1>
+<h2 id="index"><a class="header" href="#index">Index</a></h2>
+<ul>
+<li><a href="#introito">Introito</a></li>
+<li><a href="#swaps">Swaps</a></li>
+</ul>
+<h2 id="introito"><a class="header" href="#introito">Introito</a></h2>
+<p>To fully understand what is Uniswap and how can you use it for your POCs and to spot forks of its code you must know what an Automated Market Maker is. The basic idea is that you have a pool of two assets whose value is in terms of the other (1ETH is equal to 5BTC, for the shake of the example xD). Now, if you buy one of those two assets in the pool, the prices will change (1ETH now is equal to 4.8BTC) and so on. The mental idea is two elevators that goes in opposite directions with proportional speed, kind of, not the best example but fuck it (-&gt; -_-)-&gt;</p>
+<p>And that's it, we are not developers so if you want a nerdy-technical reference check the <a href="./docs/Uniswap-whitepaper.pdf">whitepaper</a> (it's not a suggestion, is an order, read it whenever you can, just READ and practice xD)</p>
+<h2 id="swaps"><a class="header" href="#swaps">Swaps</a></h2>
+<p>That is, exchange one token for another one. We have to functions for that (single swaps, go check <a href="https://docs.uniswap.org/contracts/v3/guides/swaps/multihop-swaps">multi</a> if you want):</p>
+<ul>
+<li><code>swapExactInputSingle</code> -&gt; swap known amount of tokens X with the maximum possible amount of tokens Y</li>
+<li><code>swapExactOutputSingle</code> -&gt; swap minimum possible amount of tokens X for a known amount of Y tokens </li>
+</ul>
+<p>Here goes the example from the <a href="https://docs.uniswap.org/contracts/v3/guides/swaps/single-swaps">docs</a>, adapted for our needs (that is, just focus on the <code>swapExactInputSingle</code>)</p>
+<pre><code class="language-solidity">pragma solidity 0.8.19;
+pragma abicoder v2; // for encoding and decoding arbitrary nested arrays and structs
+
+
+// if using foundry -&gt; update the mappings.txt like you would do with OpenZeppelin or Solmate
+import '@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
+import '@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol';
+
+
+contract SwapExample { // don't give a fuck about the contract, just focus on the layouts
+    ISwapRouter public immutable swapRouter;
+    
+    
+    address public constant DAI = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
+    address public constant WETH9 = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+    // initialize other tokens and variables, just know that Uniswap works with ERC20 tokens
+    uint24 public constant poolFee = 3000;
+
+    constructor(ISwapRouter _swapRouter) {
+        swapRouter = _swapRouter;
+        // init others
+        
+    }
+    
+    /// @param amountIn The exact amount of DAI that will be swapped for WETH9
+    /// @return amountOut The amount of WETH9 received
+    function swapExactInputSingle(uint256 amountIn) external returns (uint256 amountOut) {
+        // Transfer the specified amount of DAI to this contract
+        TransferHelper.safeTransferFrom(DAI, msg.sender, address(this), amountIn);
+
+        // Approve the router to spend DAI
+        TransferHelper.safeApprove(DAI, address(swapRouter), amountIn);
+        
+        ISwapRouter.ExactInputSingleParams memory params =
+        ISwapRouter.ExactInputSingleParams({
+            tokenIn: DAI,
+            tokenOut: WETH9,
+            fee: poolFee,
+            recipient: msg.sender,
+            deadline: block.timestamp,
+            amountIn: amountIn,
+            amountOutMinimum: 0, // use an oracle or other data source to choose a safer value for amountOutMinimum
+            sqrtPriceLimitX96: 0 // ensure we swap our exact input amount
+        });
+
+        // The call to `exactInputSingle` executes the swap
+        amountOut = swapRouter.exactInputSingle(params);
+        
+        // we would have now our tokens in the contract, do a token.balanceOf(address(this)) to check that or assertEq(...) in the tests
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../DeFi/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../DeFi/AAVE.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../DeFi/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../DeFi/AAVE.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

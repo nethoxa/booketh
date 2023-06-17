@@ -1,0 +1,616 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Functions - booketh</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../EVM/index.html"><strong aria-hidden="true">1.</strong> EVM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../EVM/Solidity Versions.html"><strong aria-hidden="true">1.1.</strong> Solidity versions</a></li><li class="chapter-item expanded "><a href="../EVM/Upgradeable.html"><strong aria-hidden="true">1.2.</strong> Upgradeable</a></li></ol></li><li class="chapter-item expanded "><a href="../Data locations/index.html"><strong aria-hidden="true">2.</strong> Data locations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Data locations/Stack.html"><strong aria-hidden="true">2.1.</strong> Stack</a></li><li class="chapter-item expanded "><a href="../Data locations/Memory.html"><strong aria-hidden="true">2.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="../Data locations/Storage.html"><strong aria-hidden="true">2.3.</strong> Storage</a></li><li class="chapter-item expanded "><a href="../Data locations/Calldata.html"><strong aria-hidden="true">2.4.</strong> Calldata</a></li></ol></li><li class="chapter-item expanded "><a href="../Tokens/index.html"><strong aria-hidden="true">3.</strong> Tokens</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Tokens/ERC 20.html"><strong aria-hidden="true">3.1.</strong> ERC 20</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 721.html"><strong aria-hidden="true">3.2.</strong> ERC 721</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 777.html"><strong aria-hidden="true">3.3.</strong> ERC 777</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 1155.html"><strong aria-hidden="true">3.4.</strong> ERC 1155</a></li><li class="chapter-item expanded "><a href="../Tokens/ERC 4626.html"><strong aria-hidden="true">3.5.</strong> ERC 4626</a></li></ol></li><li class="chapter-item expanded "><a href="../DeFi/index.html"><strong aria-hidden="true">4.</strong> DeFi</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../DeFi/Uniswap.html"><strong aria-hidden="true">4.1.</strong> Uniswap</a></li><li class="chapter-item expanded "><a href="../DeFi/AAVE.html"><strong aria-hidden="true">4.2.</strong> AAVE</a></li><li class="chapter-item expanded "><a href="../DeFi/Curve.html"><strong aria-hidden="true">4.3.</strong> Curve</a></li></ol></li><li class="chapter-item expanded "><a href="../Yul/index.html"><strong aria-hidden="true">5.</strong> Yul</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Yul/Basics.html"><strong aria-hidden="true">5.1.</strong> Basics</a></li><li class="chapter-item expanded "><a href="../Yul/Advanced.html"><strong aria-hidden="true">5.2.</strong> Advanced</a></li><li class="chapter-item expanded "><a href="../Yul/ERC 20.html"><strong aria-hidden="true">5.3.</strong> ERC 20</a></li><li class="chapter-item expanded "><a href="../Yul/Functions.html" class="active"><strong aria-hidden="true">5.4.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../Yul/Opcodes.html"><strong aria-hidden="true">5.5.</strong> Opcodes</a></li></ol></li><li class="chapter-item expanded "><a href="../References.html"><strong aria-hidden="true">6.</strong> References</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">booketh</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Instruction</p></th>
+<th class="head"></th>
+<th class="head"></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>stop()</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>stop execution, identical to return(0, 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>add(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x + y</p></td>
+</tr>
+<tr class="row-even"><td><p>sub(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x - y</p></td>
+</tr>
+<tr class="row-odd"><td><p>mul(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x * y</p></td>
+</tr>
+<tr class="row-even"><td><p>div(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x / y or 0 if y == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>sdiv(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x / y, for signed numbers in two’s complement, 0 if y == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>mod(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x % y, 0 if y == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>smod(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x % y, for signed numbers in two’s complement, 0 if y == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>exp(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>x to the power of y</p></td>
+</tr>
+<tr class="row-odd"><td><p>not(x)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>bitwise “not” of x (every bit of x is negated)</p></td>
+</tr>
+<tr class="row-even"><td><p>lt(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>1 if x &lt; y, 0 otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p>gt(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>1 if x &gt; y, 0 otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p>slt(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>1 if x &lt; y, 0 otherwise, for signed numbers in two’s complement</p></td>
+</tr>
+<tr class="row-odd"><td><p>sgt(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>1 if x &gt; y, 0 otherwise, for signed numbers in two’s complement</p></td>
+</tr>
+<tr class="row-even"><td><p>eq(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>1 if x == y, 0 otherwise</p></td>
+</tr>
+<tr class="row-odd"><td><p>iszero(x)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>1 if x == 0, 0 otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p>and(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>bitwise “and” of x and y</p></td>
+</tr>
+<tr class="row-odd"><td><p>or(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>bitwise “or” of x and y</p></td>
+</tr>
+<tr class="row-even"><td><p>xor(x, y)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>bitwise “xor” of x and y</p></td>
+</tr>
+<tr class="row-odd"><td><p>byte(n, x)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>nth byte of x, where the most significant byte is the 0th byte</p></td>
+</tr>
+<tr class="row-even"><td><p>shl(x, y)</p></td>
+<td></td>
+<td><p>C</p></td>
+<td><p>logical shift left y by x bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>shr(x, y)</p></td>
+<td></td>
+<td><p>C</p></td>
+<td><p>logical shift right y by x bits</p></td>
+</tr>
+<tr class="row-even"><td><p>sar(x, y)</p></td>
+<td></td>
+<td><p>C</p></td>
+<td><p>signed arithmetic shift right y by x bits</p></td>
+</tr>
+<tr class="row-odd"><td><p>addmod(x, y, m)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>(x + y) % m with arbitrary precision arithmetic, 0 if m == 0</p></td>
+</tr>
+<tr class="row-even"><td><p>mulmod(x, y, m)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>(x * y) % m with arbitrary precision arithmetic, 0 if m == 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>signextend(i, x)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>sign extend from (i*8+7)th bit counting from least significant</p></td>
+</tr>
+<tr class="row-even"><td><p>keccak256(p, n)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>keccak(mem[p…(p+n)))</p></td>
+</tr>
+<tr class="row-odd"><td><p>pc()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>current position in code</p></td>
+</tr>
+<tr class="row-even"><td><p>pop(x)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>discard value x</p></td>
+</tr>
+<tr class="row-odd"><td><p>mload(p)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>mem[p…(p+32))</p></td>
+</tr>
+<tr class="row-even"><td><p>mstore(p, v)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>mem[p…(p+32)) := v</p></td>
+</tr>
+<tr class="row-odd"><td><p>mstore8(p, v)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>mem[p] := v &amp; 0xff (only modifies a single byte)</p></td>
+</tr>
+<tr class="row-even"><td><p>sload(p)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>storage[p]</p></td>
+</tr>
+<tr class="row-odd"><td><p>sstore(p, v)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>storage[p] := v</p></td>
+</tr>
+<tr class="row-even"><td><p>msize()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>size of memory, i.e. largest accessed memory index</p></td>
+</tr>
+<tr class="row-odd"><td><p>gas()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>gas still available to execution</p></td>
+</tr>
+<tr class="row-even"><td><p>address()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>address of the current contract / execution context</p></td>
+</tr>
+<tr class="row-odd"><td><p>balance(a)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>wei balance at address a</p></td>
+</tr>
+<tr class="row-even"><td><p>selfbalance()</p></td>
+<td></td>
+<td><p>I</p></td>
+<td><p>equivalent to balance(address()), but cheaper</p></td>
+</tr>
+<tr class="row-odd"><td><p>caller()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>call sender (excluding <code class="docutils literal notranslate"><span class="pre">delegatecall</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>callvalue()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>wei sent together with the current call</p></td>
+</tr>
+<tr class="row-odd"><td><p>calldataload(p)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>call data starting from position p (32 bytes)</p></td>
+</tr>
+<tr class="row-even"><td><p>calldatasize()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>size of call data in bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p>calldatacopy(t, f, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>copy s bytes from calldata at position f to mem at position t</p></td>
+</tr>
+<tr class="row-even"><td><p>codesize()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>size of the code of the current contract / execution context</p></td>
+</tr>
+<tr class="row-odd"><td><p>codecopy(t, f, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>copy s bytes from code at position f to mem at position t</p></td>
+</tr>
+<tr class="row-even"><td><p>extcodesize(a)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>size of the code at address a</p></td>
+</tr>
+<tr class="row-odd"><td><p>extcodecopy(a, t, f, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>like codecopy(t, f, s) but take code at address a</p></td>
+</tr>
+<tr class="row-even"><td><p>returndatasize()</p></td>
+<td></td>
+<td><p>B</p></td>
+<td><p>size of the last returndata</p></td>
+</tr>
+<tr class="row-odd"><td><p>returndatacopy(t, f, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>B</p></td>
+<td><p>copy s bytes from returndata at position f to mem at position t</p></td>
+</tr>
+<tr class="row-even"><td><p>extcodehash(a)</p></td>
+<td></td>
+<td><p>C</p></td>
+<td><p>code hash of address a</p></td>
+</tr>
+<tr class="row-odd"><td><p>create(v, p, n)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>create new contract with code mem[p…(p+n)) and send v wei
+and return the new address; returns 0 on error</p></td>
+</tr>
+<tr class="row-even"><td><p>create2(v, p, n, s)</p></td>
+<td></td>
+<td><p>C</p></td>
+<td><p>create new contract with code mem[p…(p+n)) at address
+keccak256(0xff . this . s . keccak256(mem[p…(p+n)))
+and send v wei and return the new address, where <code class="docutils literal notranslate"><span class="pre">0xff</span></code> is a
+1 byte value, <code class="docutils literal notranslate"><span class="pre">this</span></code> is the current contract’s address
+as a 20 byte value and <code class="docutils literal notranslate"><span class="pre">s</span></code> is a big-endian 256-bit value;
+returns 0 on error</p></td>
+</tr>
+<tr class="row-odd"><td><p>call(g, a, v, in,
+insize, out, outsize)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>call contract at address a with input mem[in…(in+insize))
+providing g gas and v wei and output area
+mem[out…(out+outsize)) returning 0 on error (eg. out of gas)
+and 1 on success
+<a class="reference internal" href="#yul-call-return-area"><span class="std std-ref">See more</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>callcode(g, a, v, in,
+insize, out, outsize)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>identical to <code class="docutils literal notranslate"><span class="pre">call</span></code> but only use the code from a and stay
+in the context of the current contract otherwise
+<a class="reference internal" href="#yul-call-return-area"><span class="std std-ref">See more</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>delegatecall(g, a, in,
+insize, out, outsize)</p></td>
+<td></td>
+<td><p>H</p></td>
+<td><p>identical to <code class="docutils literal notranslate"><span class="pre">callcode</span></code> but also keep <code class="docutils literal notranslate"><span class="pre">caller</span></code>
+and <code class="docutils literal notranslate"><span class="pre">callvalue</span></code>
+<a class="reference internal" href="#yul-call-return-area"><span class="std std-ref">See more</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>staticcall(g, a, in,
+insize, out, outsize)</p></td>
+<td></td>
+<td><p>B</p></td>
+<td><p>identical to <code class="docutils literal notranslate"><span class="pre">call(g,</span> <span class="pre">a,</span> <span class="pre">0,</span> <span class="pre">in,</span> <span class="pre">insize,</span> <span class="pre">out,</span> <span class="pre">outsize)</span></code> but do
+not allow state modifications
+<a class="reference internal" href="#yul-call-return-area"><span class="std std-ref">See more</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>return(p, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>end execution, return data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-even"><td><p>revert(p, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>B</p></td>
+<td><p>end execution, revert state changes, return data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-odd"><td><p>selfdestruct(a)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>end execution, destroy current contract and send funds to a</p></td>
+</tr>
+<tr class="row-even"><td><p>invalid()</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>end execution with invalid instruction</p></td>
+</tr>
+<tr class="row-odd"><td><p>log0(p, s)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>log without topics and data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-even"><td><p>log1(p, s, t1)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>log with topic t1 and data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-odd"><td><p>log2(p, s, t1, t2)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>log with topics t1, t2 and data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-even"><td><p>log3(p, s, t1, t2, t3)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>log with topics t1, t2, t3 and data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-odd"><td><p>log4(p, s, t1, t2, t3,
+t4)</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>F</p></td>
+<td><p>log with topics t1, t2, t3, t4 and data mem[p…(p+s))</p></td>
+</tr>
+<tr class="row-even"><td><p>chainid()</p></td>
+<td></td>
+<td><p>I</p></td>
+<td><p>ID of the executing chain (EIP-1344)</p></td>
+</tr>
+<tr class="row-odd"><td><p>basefee()</p></td>
+<td></td>
+<td><p>L</p></td>
+<td><p>current block’s base fee (EIP-3198 and EIP-1559)</p></td>
+</tr>
+<tr class="row-even"><td><p>origin()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>transaction sender</p></td>
+</tr>
+<tr class="row-odd"><td><p>gasprice()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>gas price of the transaction</p></td>
+</tr>
+<tr class="row-even"><td><p>blockhash(b)</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>hash of block nr b - only for last 256 blocks excluding current</p></td>
+</tr>
+<tr class="row-odd"><td><p>coinbase()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>current mining beneficiary</p></td>
+</tr>
+<tr class="row-even"><td><p>timestamp()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>timestamp of the current block in seconds since the epoch</p></td>
+</tr>
+<tr class="row-odd"><td><p>number()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>current block number</p></td>
+</tr>
+<tr class="row-even"><td><p>difficulty()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>difficulty of the current block</p></td>
+</tr>
+<tr class="row-odd"><td><p>gaslimit()</p></td>
+<td></td>
+<td><p>F</p></td>
+<td><p>block gas limit of the current block</p></td>
+</tr>
+</tbody>
+</table>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../Yul/ERC 20.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../Yul/Opcodes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../Yul/ERC 20.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../Yul/Opcodes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
